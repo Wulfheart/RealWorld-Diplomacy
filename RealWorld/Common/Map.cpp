@@ -1,0 +1,9 @@
+Version:	1
+Name: 		Standard
+MapData: 	Standard/Standard.map
+Countries: 	Standard/Standard.cnt
+Game:		Standard/Standard.gam
+BWMap:		Standard/StandardBW
+ColorMap:	Standard/Standard
+Regions:	Standard2/Standard.rgn
+Flags:		0

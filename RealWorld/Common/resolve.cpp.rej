@@ -1,0 +1,45 @@
+***************
+*** 758,775
+- 	       // if we're stronger 
+- 		   if (stronger(reg1, other)) 
+- 		   {
+- // if we fail for some other reason, other guy *might* succeed    
+- //				setgresolution(other, R_FAILS); 
+- 		   }
+- 	       // if other guy is stronger
+- 	       else if (stronger(other, reg1))  
+- 	       {   
+- 		    	setgresolution(reg1, R_FAILS);
+- 		   }
+- 	       else // same strength
+- 	       {                            		    
+- 		    	/* cf. rule IX.7 */
+- 		    	/* other guy dislodged by attack from destination */
+- 		    	if (gdest(dest) == other
+- 					&& stronger(dest, other))
+- 			 		setgresolution(other, R_DISLODGE);
+--- 756,762 -----
++ 			// if the move hasn't failed or has bounced here
++ 			if ( !gfails(other) || gresolution(other) == R_BOUNCES)
++ 			{
++ 				/* cf. rule IX.7 */
++ 				/* other guy dislodged by attack from destination */
++ 				if (gdest(dest) == other && stronger(dest, other))
++ 					setgresolution(other, R_DISLODGE);
+***************
+*** 777,780
+- 		    	/* we're dislodged by attack from destination */
+- 		    	else if (gdest(dest) == reg1
+- 					&& stronger(dest, reg1))
+- 			 		setgresolution(reg1, R_DISLODGE);
+--- 764,773 -----
++ 				/* we're dislodged by attack from destination */
++ 				else if (gdest(dest) == reg1 && stronger(dest, reg1))
++ 					setgresolution(reg1, R_DISLODGE);
++ 			
++ 				// if we're stronger 
++ 		   		else if (stronger(reg1, other)) 
++ 		   		{
++ 					// if we fail for some other reason, other guy *might* succeed    
++ 					// setgresolution(other, R_FAILS); 
++ 				}

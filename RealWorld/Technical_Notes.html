@@ -1,0 +1,409 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft Word 97/98">
+<TITLE>Realpolitik Technical Manual</TITLE>
+</HEAD>
+<BODY bgcolor="#FFFFFF" text="#000000">
+<table width="90%" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr>
+    <td><font size=5>
+      <p align="CENTER"><b><font face="Arial, Helvetica, sans-serif" size="4">Realpolitik
+        Technical Manual</font><font face="Arial, Helvetica, sans-serif"><br>
+        </font></b> <font size="2" face="Arial, Helvetica, sans-serif">by <a href="mailto:jvsquare@users.sourceforge.net">Jim Van Verth</a>
+        and <a href="mailto:bhines@alumni.ucsd.edu">Ben Hines</a>
+        </font></p>
+      </font>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">The purpose of this
+        document is to provide an overview for the source code for Realpolitik.
+        I admit that it is not anywhere complete. I&#146;ll be working on it over
+        the next few months, and I am hoping that others can also contribute,
+        making a fuller picture of Realpolitik.</font></p>
+      <b><font size=2 face="Arial, Helvetica, sans-serif">
+      <p>History</p>
+      </font></b>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">Realpolitik began
+        as a Unix program, written to moderate games amongst my friends. While
+        the games ended (sorry Gus), I continued working on the program. Originally
+        I intended it to be a mail server, but gave that up after being introduced
+        to the Judge. However, seeing MapIt gave me the idea of giving it a graphical
+        interface and running it on the Macintosh. MacDip was born. I continued
+        working on MacDip for a few years until circumstances led me to pull it
+        from distribution. But after I saw other programs continue, I brought
+        MacDip back, in a new incarnation: Realpolitik. The following years saw
+        a port of Realpolitik to Windows, and then a cross platform version with
+        shared data files and common code. </font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">This rather checkered
+        history has led to some rather checkered code. The oldest code is the
+        resolution code, and it has a definite vanilla C feel to it. There are
+        some #defines which act like C++ methods, but it's basically C. The newest
+        parts are the platform specific classes, which are fairly object-oriented,
+        but there are, admittedly, some hacks.</font></p>
+      <p>&nbsp;</p>
+      <b><font size=2 face="Arial, Helvetica, sans-serif">
+      <p>File Manifest</p>
+      </font></b> <b>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">Common</font></p>
+      </b>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">ConvoyRoutes.cpp -
+       code to handle specific convoy routes for armies.</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">DrawMap.cpp - all
+        the code to draw the various parts of the map, other than orders. This
+        also includes the code to load and unload the icons for the pieces.</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">DrawOrders.cpp - code
+        to draw just orders, of all types</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">EdgeList.{cpp,h} -
+        manages lists of polygon edges along scanlines for the Rgn class </font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">EditMap.{cpp,h} -
+        generic interface to edit map functions -- turns edit map mode on and
+        off</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">Fails.{cpp,h} - order
+        failure codes and associated strings</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">Game.{cpp,h} - game
+        file loading and saving. Contains globals for season, year, adjustments,
+        winner and various game states</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">Global.h - common
+        global variables defined in platform specific Main.cpp</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">Graph.{cpp,h} - graph
+        data structure used to adjudicate orders</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">History.{cpp,h} -
+        data structure used to store and manage history information</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">Initialize.{cpp,h}
+        - common initialization routines</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">MapContent.{cpp,h}
+        - routines for handling clicks in the map window</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">MapData.{cpp,h} -
+        data structures and loading routines for map, country and region info</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">MapDisplay.{cpp,h}
+        - routines for creation, destruction and management of the map window</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">Neighbor.{cpp,h} -
+        data structure for managing connections between spaces on the map</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">Order.{cpp,h} - data
+        structure and routines for all order types</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">OrderPalette.{cpp.h}
+        - routines to manage display and clicking in order palette</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">OrdersDisplay.{cpp,h}
+        - creation, deletion and management of orders and errors windows</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">Parse.{cpp,h} - useful
+        routines for parsing lines of text</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">ReadOrders.{cpp,h}
+        - a poor name for routines for the functions in the Order menu. Also includes
+        PreviousHistory() and NextHistory(), which are similar.</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">Resolve.{cpp,h} -
+        heart of the resolution engine</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">Unit.{cpp,h} - data
+        structures and routines for managing units</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">Variants.{cpp.h} -
+        data structure and routines for changing and loading variant info</font></p>
+      <b>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">Platform-Specific
+        (MacOS/Win32)</font></p>
+      </b>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">COffscreen.{cpp,h}
+        (MacOS only) - routines for creating and managing offscreen graphics buffers.
+        Should probably be replaced by GWorlds.</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">Dibfile.{cpp,h} -
+        routines for loading and saving BMP files</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">Dibapi.h (Win32) only
+        - extra header for BMP routines</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">EditMenu.{cpp,h} -
+        creation, deletion and management of pop-up edit menu</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">EventUtil.{cpp,h}
+        - filter routines for various incoming events, other than menu events</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">FileFinder.{cpp,h}
+        - class to search through directories for files</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">Image.{cpp,h} - wrapper
+        class for platform-specific image types (Picture and HBITMAP)</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">InfoDisplay.{cpp,h}
+        - creation, deletion and management routines for info dialog</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">ListUtil.{cpp,h} -
+        core routines for managing lists in windows</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">LWindows.{cpp,h} -
+        core routines for managing windows with lists in them</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">MacTypes.{cpp,h} -
+        wrapper routines for simulating QuickDraw (empty on the Mac)</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">Main.cpp - starting
+        point for all the fun. Contains platform-specific globals.</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">MenuUtil.{cpp,h} -
+        routines for handling menu events</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">Offscreen.{cpp,h}
+        - wrapper for offscreen buffers</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">OldGame.{cpp.h} -
+        routine for handling old save game format (only on Mac)</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">PieceIcon.{cpp,h}
+        - wrapper class for loading and displaying piece icons</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">Preferences.{cpp,h}
+        - routines for loading and saving preference info</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">Print.{cpp,h} - printer
+        initialization and map printing</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">Resource file and
+        Resource.h - main application resources</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">Rgn.{cpp,h} - this
+        class represents an area on the map -- used to represent where spaces
+        are on the map</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">ScrollableWindow.{cpp,h}
+        - creation, deletion and management routines for basic scrollable window
+        (used for map window).</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">StatusDisplay.{cpp,h}
+        - creation, deletion and management routines for status dialog</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">Strings.{cpp,h} -
+        in theory, string table management. This is actually only true on the
+        Mac. Under Windows, this is a list of strings and constants with a wrapper
+        routine to simulate a string table.</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">TextFile.{cpp,h} -
+        class for loading from and saving to text files</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">Util.{cpp,h} - generic,
+        useful, platform-specific routines. Includes GetFile, PutFile routines,
+        </font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">WindowUtil.{cpp,h}
+        - useful routines for managing windows and bringing up specific small
+        windows (like the About Box and Winner dialogs).</font></p>
+      <p>&nbsp;</p>
+      <b><font size=2 face="Arial, Helvetica, sans-serif">
+      <p>Initialization</p>
+      </font></b>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">Because Realpolitik
+        is a cross-platform application, initialization gets a little wonky. There
+        are certain platform-specific things that need to be done for initial
+        startup, then some common initialization routines are called. Finally,
+        Mac and Windows have completely different ways for handling drag-and-drop,
+        so a second platform-specific split must occur.</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">Realpolitik begins
+        the action in the file Main.cpp. This contains the main startup routine
+        (either main() or WinMain()) as well as the main event loop. There are
+        also a number of platform-dependant globals defined here. The main startup
+        routine begins by doing some platform-dependant initializations, then
+        calls the routine InitializeCommon(), found in Initialize.cpp. This does
+        some basic setup for Realpolitik: loading preferences, allocating memory
+        for data structures, loading the list of variants, and creating the text
+        windows. If this succeeds, Realpolitik moves on to either creating a new
+        game or loading one from drag-and-drop.</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">Macintosh drag-and-drop
+        works by sending an AppleEvent event to the application. So Mac Realpolitik
+        finishes calling InitializeCommon() and drops right into the main event
+        loop. The AppleEvent is caught (in EventUtil.cpp), and the appropriate
+        routine, either InitNewGame() or OpenFinderGame() is called.</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">Windows drag-and-drop
+        works by putting a file name in the cmdline for the application. If there
+        is a filename there, Realpolitik calls OpenFinderGame(). Otherwise it
+        calls InitNewGame(). Only then is the main event loop started up.</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">InitNewGame() and
+        OpenFinderGame() are pretty similar (in fact, in writing this document
+        I realized that InitNewGame() should really just call OpenFinderGame(),
+        using the .gam file for the variant). InitNewGame() works by setting the
+        current variant to the last one used, initializing the map window (which
+        also loads the map data for the variant) and then creating a new game,
+        which reads the information from the .gam file. OpenFinderGame() opens
+        the given file, sets the variant based on the file info, and then does
+        the same initialization of the map window and loading game information,
+        but this time from the .dpy file.</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">When either InitNewGame()
+        or OpenFinderGame() are done, control returns to the main event loop,
+        and Realpolitk is ready to use.</font></p>
+      <b><font size=4>
+      <p>&nbsp;</p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">Movement Resolution
+        Algorithm</font></p>
+      </font></b>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">As mentioned before,
+        the resolution algorithm in Realpolitik is some of the oldest code in
+        the program. It runs off of a directed graph data structure into which
+        orders are added. Probably at some point this should be made into a C++
+        class, but I wasn&#146;t eager to do something that might break the code
+        for this release. Because of its obtuse nature this code is also fairly
+        well commented. Note that this algorithm attempts to be as true to the
+        spirit of the Avalon Hill/Hasbro rules as possible, so you can have multiple
+        convoys for a single unit.</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">The first stage in
+        resolution is adding orders to the graph. First (unless Overwrite Units
+        is set) all the units are added to the graph and assumed to hold. Then
+        each order is added. Orders can be rejected through simple tests at this
+        point &#151; for instance, there is no unit at that location, or support
+        is provided to a space that the unit can&#146;t reach, or a unit is moving
+        to a space that it can&#146;t reach and it&#146;s not being convoyed,
+        etc. </font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">To test if a army
+        can be convoyed to a space it can&#146;t normally get to, Realpolitik
+        uses a depth-first search, using the starting and ending spaces for the
+        army, and any convoying fleets that match the order. Note that this does
+        not find the shortest path &#151; it merely guarantees that there is a
+        path.</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">Once all the orders
+        have been added to the graph, the algorithm begins. The first step is
+        to check for cut supports. Because of the oddness of convoyed units and
+        dislodged fleets, this happens in a series of stages:</font></p>
+      <ol>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">Cut all supports
+          using non-convoyed units</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">Mark convoys that
+          could be dislodged as dubious</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">Mark convoyed armies
+          by those convoys as dubious</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">Cut supports from
+          convoyed armies that are guaranteed to get there</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">Clear the &#145;dubious&#146;
+          marks</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">Perform any dislodges
+          on convoys</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">Mark convoyed armies
+          by those convoys as failed</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">Cut any remaining
+          supports by convoyed armies</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">Finally, cut any
+          supports against a stronger attacker</font></li>
+      </ol>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">The basic idea is
+        that first we cut supports by all moves that we know will get there, then
+        dislodge any convoying fleets, then cut via any remaining moves.</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">The next step is to
+        check moves that have supports from one country that may dislodge a unit
+        of the same country. This will clear those supports, or just enough to
+        bounce an opposing force, not to dislodge.</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">The next step is to
+        check all other move orders. This is done using a routine called follow().
+        The concept is that we see if a move succeeds by following its path through
+        the graph. This may depend on another move succeeding (i.e. moving out
+        of the way) so we follow that move. And so on, until either a move definitely
+        succeeds or fails, or we end up with a cycle, in which case all moves
+        succeed.</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">The stages in the
+        follow function are:</font></p>
+      <ol>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">Make sure this
+          is a non-resolved move order</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">If there&#146;s
+          a cycle, return failure if you&#146;re trying to switch with your neighbor
+          (unless one of you is convoyed), otherwise return success</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">If your destination
+          is moving towards you and has greater support than you, mark as failed
+          and return (assuming neither of you are convoyed).</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">If you are not
+          the strongest unit vying for the destination, return failure</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">If there&#146;s
+          no unit there, mark success and return</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">If there is a unit
+          and it moves (test by calling follow() for that unit), mark success
+          and return</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">Remove any supports
+          for this move that would lead to a self-dislodge (rule IX.3)</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">If we&#146;re still
+          stronger in support than our destination and we wouldn&#146;t self-dislodge,
+          then mark success and return.</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">If we&#146;re still
+          stronger in support then our destination and we would self-dislodge,
+          return failure</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">Otherwise mark
+          failed and return.</font></li>
+      </ol>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">Note a couple of fine
+        points. There is a difference between marking a move as failed, and returning
+        failure. Marking a move as failure means that it will not succeed under
+        any circumstances. Returning failure without marking it means that it
+        won&#146;t succeed, but it may be used to bounce another move. Also note
+        that areas where bounces occur are marked so that they will be unavailable
+        for retreats.</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">The final step of
+        resolution is to check for self-dislodges. Any move that would dislodge
+        a unit of the same country automatically fails. This is done after the
+        main follow algorithm so that self-dislodges can still be used to bounce
+        enemy moves.</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">The remainder is just
+        clean-up: adding dislodged units to the dislodge list, and copying the
+        resolution from the graph back to the order.</font></p>
+      <b><font size=2 face="Arial, Helvetica, sans-serif">
+      <p>Retreat and Adjustment Resolution</p>
+      </font></b>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">Retreats are resolved
+        very simply. First check that the unit can retreat to the space it&#146;s
+        retreating to, and then add to the graph like a normal move order. Any
+        bounces are changed to disbands. Any retreating unit that has no order
+        is automatically disbanded.</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">Adjustments are also
+        pretty simple. They need to be added to the graph to check for duplicate
+        orders and set up things for civil disorder, but then it&#146;s just a
+        case of going through order by order and making sure that there aren&#146;t
+        too many builds or removals for a particular country. The one wrinkle
+        is when a country has given to few removals &#151; in this case civil
+        disorder takes over and units are automatically removed. This is done
+        using a breadth-first search to determine the distance between the country&#146;s
+        home centers and each of the country&#146;s units. Armies are slightly
+        different in that sea spaces with fleets are included in the search, since
+        they can be used to convoy the armies.</font></p>
+      <p>&nbsp;</p>
+      <b><font size=2 face="Arial, Helvetica, sans-serif">
+      <p>Miscellaneous</p>
+      </font></b>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">As mentioned above,
+        this document is not nearly complete. The problem is that the time I spend
+        writing documentation, is time where others don&#146;t have access to
+        code &#151; so I&#146;m releasing it in this unfinished state and hope
+        the code, such as it is, will speak for itself until I have a chance to
+        finish writing. Until then, here are some miscellaneous notes on some
+        of the trickier bits of code.</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">InitMapDisplay() calls
+        ReadMapData() and LoadInfoText(). I&#146;m sure there was a historical
+        reason for this (I blame the Gauls), but the reason I left it is because
+        every time I&#146;m loading a new variant I want to initialize the map
+        window, then read map data, then the info text. This would probably be
+        better wrapped in a differently named initialization routine.</font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">Spaces on the map
+        are called sectors in the code. I once mis-heard supply <i>centers</i>
+        as supply <i>sectors</i>, so thought all the spaces were called sectors,
+        and the term stuck. The Judge calls them provinces, which I think is a
+        better name. </font></p>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">Certain &quot;classes&quot;,
+        such as Unit and Neighbor, are stored in linked lists. Creating and destroying
+        these lists was taking up a lot of time, so I pre-allocate memory for
+        them. If a variant is particularly large, you can run out of pre-allocated
+        data, which could cause problems. Similarly, there are a maximum number
+        of spaces and players, which are set in MapData.h.</font></p>
+      <p>&nbsp;</p>
+      <b><font size=2 face="Arial, Helvetica, sans-serif">
+      <p>Mac Carbon Build Notes</p>
+      </font></b>
+      <p><font face="Arial, Helvetica, sans-serif" size="2">We now have a Carbon build.
+      For CodeWarrior 7, there are several targets. MachO only runs on OS X, and CFM is for
+      Carbon on OS9. The reason we build MachO and CFM is so we can easily use OSX features such as
+      Services and CoreGraphics (for antialiased text and graphics).
+      The full-package target is "Carbon Final CFM/MachO" which builds both
+      binaries into a single bundled application, the structure of which looks like:
+      <pre>
+      Realpolitik.app/
+      Realpolitik.app/Realpolitik (alias to the CFM executable, for OS8.6)
+      Realpolitik.app/Contents/
+      Realpolitik.app/Contents/MacOS/Realpolitik   (this is the MachO executable)
+      Realpolitik.app/Contents/MacOSClassic/Realpolitik (this is the CFM executable)
+      Realpolitik.app/Contents/Resources/Icons
+      Realpolitik.app/Contents/Resources/Realpolitik.rsrc (flattened resource fork)
+      Realpolitik.app/Contents/Resources/1898
+      Realpolitik.app/Contents/Resources/Standard, etc (variant folders)
+      </pre>
+      This bundling system is explained in "Inside Mac OS X: System Overview".
+      <p> The Carbon build expects the variant folders to be in the bundle with the application, in
+      the Resources directory. If you build with Project Builder, it will be copied in automatically.
+          CodeWarrior does not copy the files, so you should copy all the folders from "Variant Files"
+          into the Realpolitik.app/Contents/Resources/ folder. Or simply build once with PB - it will copy them
+          for you and they will stay there until you delete them. However you need to tell PB to build into /output. (see below)
+           </p>
+          <p>
+          Realpolitik builds and runs fine in Project Builder, but PB can only build the MachO executable.
+          Currently PB 1.1 seems to have problems with relative paths (../output) to an output directory, and will
+          build into a folder called "build" in the same directory as the project. To work around this,
+          make a symlink (ln -s) to the "output" directory called "build" in the same folder as the project.
+          Alternatively, you could specify an absolute path to the output directory as the build location.
+          </p>
+          <p>
+          After building the final MachO build you should run the "strip" command in terminal on the executable.
+          Even for the final target, CW and PB do not strip everything. After the strip command the MachO binary size is less than 270k.
+          Also any xSYM files generated by codewarrior for debug builds can be deleted.
+      </font></p>
+</td>
+  </tr>
+</table>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="-1"><i>&copy;Copyright 2001
+<a href="mailto:jvsquare@users.sourceforge.net">Jim Van Verth</a> and
+<a href="mailto:bhines@alumni.ucsd.edu">Ben Hines</a> (Carbon and Misc)
+<br>
+  <a href="file:../output/Docs/license.txt">License Agreement</a></i></font> </P>
+</BODY>
+</HTML>

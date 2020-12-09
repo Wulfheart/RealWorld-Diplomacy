@@ -1,0 +1,732 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+
+<html>
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<meta name="GENERATOR" content="Mozilla/4.73 (Macintosh; U; PPC) [Netscape]">
+
+<title>RealWorld Variants</title>
+
+</head>
+
+<body text="#000000" bgcolor="#FFFFFF" link="#0000FF">
+<center>
+  <table width="90%" border="0" cellspacing="0" cellpadding="0" align="center">
+    <tr>
+      <td>
+        <center>
+          <p><font face="Arial, Helvetica, sans-serif" size="2"><b><font size="4">RealWorld
+            Variants</font><br>
+            </b>by Don Hessong and Jim Van Verth</font></p>
+            <p>Additions by Dirk Br&uuml;ggemann</p>
+        </center>
+        <p><font face="Arial, Helvetica, sans-serif" size="2"><b>Introduction</b>
+          </font>
+        <p><font face="Arial, Helvetica, sans-serif" size="2">Variants are games
+          based on Diplomacy with different maps or slightly modified rules or
+          both. Realpolitik has the capability of running variants. Many variants
+          are already included with the package, but Realpolitik also has a "plug-in"
+          scheme that allows anyone to add new variants. If you know of a map
+          variant that you want to run on Realpolitik, you can probably do it.
+          It's not that hard.</font>
+          <font face="Arial, Helvetica, sans-serif" size="2"><br>
+          &nbsp; </font>
+        <p><font face="Arial, Helvetica, sans-serif" size="2"><b>Variant Creation</b>
+          </font>
+        <p><font face="Arial, Helvetica, sans-serif" size="2">You make your own
+          variant by creating the necessary files and placing them in the correct
+          sub-folder. Most of these files are text files or common graphic file
+          formats. One file is created by the Region Tool which is an application
+          that's included with the Realpolitik package. This manual describes
+          the individual elements you need to create a variant. However, you don't
+          necessarily need to create these elements from scratch. If your variant
+          is based on a map that already exists for another variant or the standard
+          game, it's a real snap to make it. In many cases you will only need
+          to copy the folder (including its contents) of a variant that already
+          exists, then change the name of the folder to the new variant and make
+          minor changes to some of the support files within that folder.</font>
+        <p><font face="Arial, Helvetica, sans-serif" size="2">Inside the Realpolitik
+          folder there is a folder called "Variant Files", inside of which there
+          is a folder for each Realpolitik variant. In each of the variant folders
+          there is a group of files that Realpolitik needs to run that variant
+          &#150 even the standard Diplomacy game has a set of these files inside the
+          "Standard" folder. Some variants make use of the files in another variant's
+          folder. So it is very important that you do not change the names of
+          the "Variant Files" folder, or the names of any of the variant folders
+          inside it, or the names of any of the files inside the variant folders.
+          It is also important that you not move these files or sub-folders to
+          different locations. If you do these things some of the variants may
+          stop working, including the standard game.</font> <font face="Arial, Helvetica, sans-serif" size="2"><br>
+          &nbsp; </font>
+        <p><font face="Arial, Helvetica, sans-serif" size="2"><b>The Variant Folder</b>
+          </font>
+        <p><font face="Arial, Helvetica, sans-serif" color="#000000" size="2">As
+          mentioned, the folder for a particular variant resides inside the "Variant
+          Files" folder. We'll use the name "Variant" as the example throughout
+          this manual. The name of a variant's folder can be named anything you
+          like, but for clarity the variant folder is usually named the same name
+          as the variant itself. Changing the names of variant folders could adversely
+          affect other variants that share files.</font>
+        <p><font face="Arial, Helvetica, sans-serif" size="2">The following is
+          a description of each type of file in the variant folder and the files'
+          contents. With one exception, each of these files needs to be edited
+          by you the variant creator, unless the exact file needed already exists
+          (from another variant already made). Use the previously existing Standard
+          files as an example to help you figure things out. And be sure to use
+          the correct naming conventions as shown in the following.</font>
+        <p><font face="Arial, Helvetica, sans-serif" size="2">Note that for all
+          the text files, any line starting with # is a comment and is ignored.
+          The comments in the release variants are there for clarity, but you
+          can put any notes you want after a #. Also, tabs and extra spaces are
+          ignored.</font> <font face="Arial, Helvetica, sans-serif" size="2"><br>
+          &nbsp; </font>
+        <p><font face="Arial, Helvetica, sans-serif" size="2"><b>Variant.cnt</b>
+          </font>
+        <p><font face="Arial, Helvetica, sans-serif" size="2">This should be a
+          text file. This file is used to define the names of the countries in
+          the variant and other information specific to each country.</font>
+        <p><font face="Arial, Helvetica, sans-serif" size="2">Line by line, the
+          .cnt file consists of:</font>
+        <blockquote><font face="Arial, Helvetica, sans-serif" size="2"><i>Version</i>:
+          For now, this should be 1. If the file format changes in a future version
+          of Realpolitik or RealWorld, this will be used to distinguish between the old and
+          new formats.</font>
+          <p><font face="Arial, Helvetica, sans-serif" size="2"><i>Number of Countries</i>:
+            This is the number of countries in the variant.</font>
+          <p><font face="Arial, Helvetica, sans-serif" size="2"><i>Country Info</i>:
+            There should be one line for each country. Each line should consist
+            of:</font>
+          <blockquote><font face="Arial, Helvetica, sans-serif" size="2">&lt;<i>name</i>>
+            &lt;<i>adjective</i>> &lt;<i>capital initial</i>> &lt;<i>pattern</i>>
+            &lt;<i>color</i>></font></blockquote>
+          <font face="Arial, Helvetica, sans-serif" size="2">where:</font>
+          <blockquote><font face="Arial, Helvetica, sans-serif" size="2"><i>name</i>
+            = The name of the country (e.g. France)</font>
+            <p><font face="Arial, Helvetica, sans-serif" size="2"><i>adjective</i>
+              = The country adjective (e.g. French)</font>
+            <p><font face="Arial, Helvetica, sans-serif" size="2"><i>capital initial</i>
+              = The single capital initial character for that country (e.g. F)</font>
+            <p><font face="Arial, Helvetica, sans-serif" size="2"><i>pattern</i>
+              = The name of the pattern to be used for filling supply center regions.
+              Available patterns are: Random, ThinDiag, Hash, Gray, Quilt, Sparse,
+              Diag, ThinHoriz, Horiz, Vert, Stripe and Flood</font>
+            <p><font face="Arial, Helvetica, sans-serif" size="2"><i>color</i>
+              = The color to be used for units, orders and supply centers. Available
+              colors are: Black, Blue, Brown, Charcoal, Crimson, Cyan, Forest,
+              Green, Magenta, Navy, Olive, Orange, Purple, Red, Tan, Teal, White,
+              Yellow, <br>and the special colors for the World variant: Australian,
+              Brazilian, Canadian, Chinese, Colombian, Egyptian, English, French,
+              German, Indian, Indochinese, Indonesian, Italian, Ivorian, Japanese,
+              Mexican, Mongolian, Persian, Russian, African, Turkish, Islandish and
+              American.<br>
+              If anyone cares to invent better descriptions of those colors, please
+              feel free to do so. This might be implemented in future versions of RealWorld.</font>
+          </blockquote>
+        </blockquote>
+        <font face="Arial, Helvetica, sans-serif" size="2">Note that the initial
+        is used to pick the appropriate icon <font color="#000000">so if an icon
+        with that initial does not exist, you'll have to create one in either
+        the Icons file (MacOS) or the Icons folder (Win32).</font></font> <font face="Arial, Helvetica, sans-serif" size="2"><br>
+        &nbsp; </font>
+        <p><font face="Arial, Helvetica, sans-serif" size="2"><b>Variant.gam</b>
+          </font>
+        <p><font face="Arial, Helvetica, sans-serif" color="#000000" size="2">This
+          should be a text file. This file defines the home supply centers for
+          each country, the starting positions and types of units, the year and
+          season of the game's first move and other items. Note that this is the
+          same format used by RealWorld for its saved game (.dpw) files.</font>
+        <p><font face="Arial, Helvetica, sans-serif" size="2">Line by line, the
+          .gam file consists of:</font>
+        <blockquote><font face="Arial, Helvetica, sans-serif" size="2"><i>Version</i>:
+          This has to be 2. Original Realpolitik variants are version 1. This document only
+          describes the creation of version 2 variants.</font>
+          <p><font face="Arial, Helvetica, sans-serif" size="2"><i><font color="#000000">Game
+            Name</font></i><font color="#000000">: What you type here is what
+            will appear in the title bar for the map window. This will also be
+            the default name for any saved game file of the variant. However,
+            you can override the default by naming the game file something else
+            in the "save dialog". Whenever the game is opened after that point,
+            the new file name will appear in the title bar for the map window.
+            Note that renaming the file on your computer's desktop will not affect
+            the name in the title bar.</font></font>
+          <p><font face="Arial, Helvetica, sans-serif" color="#000000" size="2"><i>Variant</i>:
+            This is the variant's name. This must match exactly the name of the
+            variant as listed in the .var file.</font>
+          <p><font face="Arial, Helvetica, sans-serif" size="2"><i>Season and
+            Year</i>: This gives the season and year for the game's first turn.</font>
+          <p><font face="Arial, Helvetica, sans-serif" size="2"><i>Number Adjust</i>:
+            The number of adjustments expected. In general this should only be
+            0 except in a Winter phase. It equals the total number of builds and
+            removals expected for all countries. This can be used in variants
+            where the first action of the game is to build units.</font>
+          <p><font face="Arial, Helvetica, sans-serif" size="2"><i>Number of Countries</i>:
+            Number of countries in the game.</font>
+          <p><font face="Arial, Helvetica, sans-serif" size="2"><i>Country Info</i>:
+            There should be one group of these per country. The groups need to
+            be listed in the same order as the countries in the Variant.cnt file.
+            The group consists of three lines:</font>
+          <blockquote><font face="Arial, Helvetica, sans-serif" size="2"><i>Adjustment</i>:
+            This gives the number of builds/removals. It should be positive for
+            builds and negative for removals. This is used<font color="#000000">
+            in saved games and in</font> variants where the first action of the
+            game is to build or remove units (see Chaos for an example of the
+            latter).</font>
+            <p><font face="Arial, Helvetica, sans-serif" size="2"><i>Supply Centers</i>:
+              This is a series of 3-character (or 4-character) space abbreviations,
+              separated by spaces and representing the supply centers owned by this country
+              at the beginning of the game.</font>
+            <p><font face="Arial, Helvetica, sans-serif" size="2"><i>Other Land</i>:
+              This is a series of 3-character (or 4-character) space abbreviations,
+              separated by spaces and representing the non-supply land regions
+              owned by this country at the beginning of the game.</font>
+            <p><font face="Arial, Helvetica, sans-serif" size="2"><i>Units</i>:
+              This is a series of unit types and space abbreviations, separated
+              by spaces. It represents the units owned by this country and the
+              provinces they start in at the beginning of the game.</font>
+          </blockquote>
+          <font face="Arial, Helvetica, sans-serif" size="2"><i>Number of Dislodges</i>:
+          The total number of dislodged units. For a new variant, this should
+          be 0<font color="#000000">, unless you want to handle dislodges as the
+          first move of the game.</font></font>
+          <p><font face="Arial, Helvetica, sans-serif" color="#ED181E" size="2"><i><font color="#000000">Dislodges</font></i><font color="#000000">:
+            In a new variant, there are generally no dislodges. However, if there
+            are dislodges, there should be a string of the following format per
+            dislodge. </font></font>
+          <blockquote><font face="Arial, Helvetica, sans-serif" color="#000000" size="2">&lt;<i>country
+            name</i>> &lt;<i>unitID</i>> &lt;<i>spaceID</i>> [&lt;<i>coast</i>>]
+            &lt;<i>retreatspaces</i>></font></blockquote>
+          <font face="Arial, Helvetica, sans-serif" color="#000000" size="2">where
+          UnitID is 'A' or 'F' or 'W' (the latter only in variants that use Wings).
+          The retreat spaces are just a string of 3-character
+          spaceIDs for those spaces the unit can retreat to.</font>
+          <p><font face="Arial, Helvetica, sans-serif" size="2"><i>History</i>:
+            Lines following this store history information for saved games. For
+            a new variant, this should be -1. Information on history data will
+            included in a later version of this manual. However, most variant
+            creators should be able to get by without this section.</font>
+        </blockquote>
+        <p><font face="Arial, Helvetica, sans-serif" size="2"><br>
+          <b>Variant.map</b> </font>
+        <p><font face="Arial, Helvetica, sans-serif" size="2">This should be a
+          text file. This file defines the layout of the map. It tells Realpolitik and RealWorld
+          which spaces are adjacent to which and where armies, fleets and wings (version 2)
+          can move.
+          This is the hardest file for the variant creator to make - actually
+          it's not hard - it's tedious. But if your variant is based on a map
+          that's already used by another variant, then you're home free. This
+          file follows a very structured syntax. It is the same format used by
+          the Diplomacy judges (servers used to run games over the internet automatically).
+          So if you download a judge .map file, you should be able to plug it
+          right into RealWorld. Besides being used by RealWorld, the Region
+          Tool uses this file to create the Variant.rgn file.</font>
+        <p><font face="Arial, Helvetica, sans-serif" size="2">Tip: When working
+          with this file, you may find it useful to use a mono-spaced font so
+          that everything lines up nice and straight.</font>
+        <p><font face="Arial, Helvetica, sans-serif" size="2">This file consists
+          of three sections separated by -1 on a line by itself.</font>
+        <p><font face="Arial, Helvetica, sans-serif" size="2">The first section
+          defines the spaces on the map. For each region there should be one line
+          consisting of</font>
+        <blockquote><font face="Arial, Helvetica, sans-serif" size="2">&lt;<i>name</i>>,
+          &lt;<i>letter(s)</i>> &lt;<i>abbreviations</i>></font></blockquote>
+        <font face="Arial, Helvetica, sans-serif" size="2">where</font>
+        <blockquote><font face="Arial, Helvetica, sans-serif" size="2"><i>name</i>
+          = The full name of the region (e.g. Norway)</font>
+          <p><font face="Arial, Helvetica, sans-serif" size="2"><i>letter</i>
+            = The (generally) single letter that is used to define what type of
+            region it is - where:</font>
+          <blockquote>
+            <p><font face="Arial, Helvetica, sans-serif" size="2">l = land</font>
+            <p><font face="Arial, Helvetica, sans-serif" size="2">a = air (only passable by wings)</font>
+            <p><font face="Arial, Helvetica, sans-serif" size="2">w = water. This
+              letter can also be appended to land provinces, or home or neutral supply centers, to
+              indicate a coastal space that can be used by fleets to convoy (for example, Baleares
+              in Ancient Med), e.g. lw or Aw or xw</font>
+            <p><font face="Arial, Helvetica, sans-serif" size="2">b = support center where everyone can build if they control it.
+                This may only be used as second letter (e.g. Ab or xb).</font>
+            <p><font face="Arial, Helvetica, sans-serif" size="2">s = special region for the Hanse Variant (Place where St&ouml;rtebekerj&auml;ger may be built)..
+                This may only be used as second letter (e.g. ws or ls).</font>
+            <p><font face="Arial, Helvetica, sans-serif" size="2">&lt;capital
+              initial> = home supply center (assumed to be land) for a given power
+              using the capital initial defined for that power in the Variant.cnt
+              file</font>
+            <p><font face="Arial, Helvetica, sans-serif" size="2">x = supply center
+              that starts the game neutral (assumed to be land)</font>
+            <p><font face="Arial, Helvetica, sans-serif" size="2">v = ice (used
+              in some rule variants, for example Loeb9)</font>
+            <p><font face="Arial, Helvetica, sans-serif" size="2">&lt;digit> = canal. Used as appendix,
+              this signifies the number of a canal the province belongs to. A canal consists of two bodies of water
+              and a land province in between that controls the canal. There may be up to 9 canals in a variant.</font>
+          </blockquote>
+          <font face="Arial, Helvetica, sans-serif" size="2"><i>abbreviations</i>
+          = The accepted abbreviations for the region (at most eight), separated by single spaces
+          if there is more than one (e.g. nwy nor norw)</font></blockquote>
+        <font face="Arial, Helvetica, sans-serif" color="#000000" size="2">Note
+        there can be any number of spaces between the comma and the initial, but
+        only one space between the initial and the abbreviations.</font>
+        <p><font face="Arial, Helvetica, sans-serif" size="2">The second section
+          defines space adjacencies. Each line consists of either a set of adjacencies
+          for a fleet in a space or a set of adjacencies for an army in a space
+          in the following format:</font>
+        <blockquote><font face="Arial, Helvetica, sans-serif" size="2">&lt;<i>abbreviation</i>>-&lt;<i>type
+          of adjacency</i>>: &lt;<i>adjacencies</i>></font></blockquote>
+        <font face="Arial, Helvetica, sans-serif" size="2">where:</font>
+        <blockquote><font face="Arial, Helvetica, sans-serif" size="2"><i>abbreviation</i>
+          = The accepted abbreviation, as defined in the first section of this
+          file, for the region whose adjacencies are being defined.</font>
+          <p><font face="Arial, Helvetica, sans-serif" size="2"><i>type of adjacency</i>
+            = determines which type of unit is involved in defining the adjacency
+            where:</font>
+          <blockquote><font face="Arial, Helvetica, sans-serif" size="2">aa =
+            adjacencies only for wings in that space</font>
+          <blockquote><font face="Arial, Helvetica, sans-serif" size="2">mv =
+            adjacencies only for armies in that space</font>
+            <p><font face="Arial, Helvetica, sans-serif" size="2">xc = adjacencies
+              only for fleets in that space</font>
+            <p><font face="Arial, Helvetica, sans-serif" size="2">nc, sc, ec,
+              wc = adjacencies for specific coasts in bi-coastal spaces (it's
+              assumed that the unit involved is a fleet)</font>
+            <p><font face="Arial, Helvetica, sans-serif" size="2">mx = adjacencies
+              for armies moving with one less support (used in some rule variants,
+              for example Loeb9)</font>
+          </blockquote>
+          <font face="Arial, Helvetica, sans-serif" size="2"><i>adjacencies</i>
+          = The accepted abbreviations, as defined in the first section of this
+          file, separated by single spaces, for all the regions adjacent to the
+          region whose adjacencies are being defined (only considering the type
+          of unit involved). For bi- or tricoastal spaces, /nc, /sc, /ec, /wc is added
+          to the abbreviation to define specifically which coast a fleet can move
+          to.
+          <br>If /hx is appended to an adjacency in a list beginning with mv,
+          the adjacency is not available for retreats of armies. This is used in some
+          variants like Oceania where armies can "hop" to nearby islands, but may not
+          use this technique for retreats.
+          </font></blockquote>
+        <font face="Arial, Helvetica, sans-serif" size="2">Note that the "-" between
+        the abbreviation and the type of adjacency must be there, and that there
+        is a space between the colon and the first adjacency.</font>
+        <p><font face="Arial, Helvetica, sans-serif" size="2">Also note that using "mv"-adjacencies
+        automatically makes the region a land region and that using "xc" makes it reachable by
+        fleets. Thus only "aa"-adjacencies may be used for air regions to keep them
+        working as desired.</font></p>
+        <p><font face="Arial, Helvetica, sans-serif" size="2">Finally note that canal ends should be
+        made adjecent by using "xc". RealWorld ensures that supports and convoys do not cross
+        a canal, but it does not check for the other prerequisites of canal usage.</font></p>
+        <p><font face="Arial, Helvetica, sans-serif" size="2">The last section
+          is the supply center order for summary report. This is not used by RealWorld.</font>
+          <font face="Arial, Helvetica, sans-serif" size="2"><br>
+          &nbsp; </font>
+        <p><font face="Arial, Helvetica, sans-serif" size="2"><b>Variant.rgn</b>
+          </font>
+        <p><font face="Arial, Helvetica, sans-serif" size="2">This should be a
+          text file. This file tells Realpolitik where all the spaces are on the
+          map, so that when you click in Berlin, RealWorld knows that that was
+          Berlin. The file consists of a list of the spaces and a series of numbers
+          that defines the spaces' physical locations on the map. They are stored
+          in scanline format - think of drawing a set of lines that fill a polygon.
+          This file is not made by you, the variant creator. The Region Tool creates
+          this file for you. In general, it's not a good idea to edit the contents
+          of this file.</font>
+        <p><font face="Arial, Helvetica, sans-serif" size="2">Just for your information,
+          line by line, the Variant.rgn file consists of:</font>
+        <blockquote><font face="Arial, Helvetica, sans-serif" size="2">Variant
+          &lt;name> (ignored by RealWorld - only there for information)</font>
+          <p><font face="Arial, Helvetica, sans-serif" size="2">For each space
+            on the map, in order of the Variant.map file:</font>
+          <blockquote><font face="Arial, Helvetica, sans-serif" size="2"># &lt;<i>spacename</i>>
+            (ignored by RealWorld - only there for information)</font>
+            <p><font face="Arial, Helvetica, sans-serif" size="2">Unit position(s)
+              &lt;<i>x, y</i>&gt;,&lt;<i>xs, ys</i>&gt;
+              <ul>x,y gives the location of unit in this space.
+              If the optional pair of coordinates xs, ys is given as well,
+              it indicates the special location of a fleet in a coastal
+              region with only one coast.</ul></font>
+            <p><font face="Arial, Helvetica, sans-serif" size="2">Name position
+              &lt;<i>x, y</i>> location of name label in this space</font>
+            <p><font face="Arial, Helvetica, sans-serif" size="2">Region Data
+              - description of region in the following format:</font>
+            <blockquote><font face="Arial, Helvetica, sans-serif" size="2">&lt;<i>#
+              scanlines</i>> number of horizontal scanlines in region</font>
+              <p><font face="Arial, Helvetica, sans-serif" size="2">&lt;<i>x1</i>>
+                &lt;<i>y1</i>> &lt;<i>length1</i>> scanline 1</font> <font face="Arial, Helvetica, sans-serif" size="2"><br>
+                &lt;<i>x2</i>> &lt;<i>y2</i>> &lt;<i>length2</i>> scanline 2</font>
+                <font face="Arial, Helvetica, sans-serif" size="2"><br>
+                .</font> <font face="Arial, Helvetica, sans-serif" size="2"><br>
+                .</font> <font face="Arial, Helvetica, sans-serif" size="2"><br>
+                .</font> <font face="Arial, Helvetica, sans-serif" size="2"><br>
+                &lt;<i>xn</i>> &lt;<i>yn</i>> &lt;<i>lengthn</i>> scanline n</font>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+        <font face="Arial, Helvetica, sans-serif" size="2">
+        &nbsp;<br> </font>
+        <font face="Arial, Helvetica, sans-serif" size="2">If the space has two or three
+        coasts, then there are additional location and region data sections for
+        coast1, coast2 and coast3 (the latter only if there really is a third coast).
+        </font> <font face="Arial, Helvetica, sans-serif" size="2"><br>
+        &nbsp; </font>
+        <p><font face="Arial, Helvetica, sans-serif" size="2"><b>Variant.txt</b>
+          </font>
+        <p><font face="Arial, Helvetica, sans-serif" size="2">This is the text
+          displayed in the Info window for the variant. You can use this file
+          to convey any information about the variant you wish - such as rules,
+          design notes, web page, etc.</font>
+        <p><font face="Arial, Helvetica, sans-serif" size="2">The info window
+          will do line wrapping for you, so you can just end paragraphs with two
+          carriage returns. There is, however, a 2048 character limit for a given
+          paragraph. If you wish to do your own line-wrapping, the window is 78
+          characters wide, so don't exceed that in your lines or you will get
+          some very odd formatting.</font> <font face="Arial, Helvetica, sans-serif" size="2"><br>
+          &nbsp; </font>
+        <p><font face="Arial, Helvetica, sans-serif" size="2"><b>About the Graphics
+          Files</b> </font>
+        <p><font face="Arial, Helvetica, sans-serif" size="2">Care must be taken
+          to make sure the graphics files all represent the identical map. The
+          borders of the spaces on the various maps should line up perfectly.
+          All three images need to be the same size at the outer edges to ensure
+          this alignment. The best approach is to start with a base map, then
+          copy the file to use to create the other two maps, modifying them accordingly,
+          but taking care not to change the boundaries between the spaces or the
+          coast lines or the outer dimensions of the map.</font> <font face="Arial, Helvetica, sans-serif" size="2"><br>
+          &nbsp; </font>
+        <p><font face="Arial, Helvetica, sans-serif" size="2"><b><font color="#000000">Variant.pct
+          or Variant.bmp</font></b> </font>
+        <p><font face="Arial, Helvetica, sans-serif" color="#000000" size="2">This
+          is a graphics file in the proper graphics format. For Windows it can
+          be an 8-bit (256 color) BMP or compressed BMP. For Macintosh it can
+          be 8-bit BMP, compressed BMP or PICT. The PICT can be a vector-based
+          PICT (e.g. through Freehand) or a bitmap-based PICT (e.g. through Photoshop).
+          You can use any graphics editing software to create this file, as long
+          as it can save it in the correct format.</font>
+        <p><font face="Arial, Helvetica, sans-serif" color="#000000" size="2">This
+          is the physical map that you see when you are using RealWorld. Besides
+          being used by RealWorld, the Region Tool uses this file to help you
+          create the Variant.rgn file.</font>
+        <p><font face="Arial, Helvetica, sans-serif" color="#000000" size="2">The
+          256-color palette you use must include the colors necessary to draw
+          the icons, orders, and supply centers. The easiest way to do this is
+          to use the standard Macintosh 256-color system palette on the Mac side
+          and the Windows standard 256-color palette on the Windows side. To guarantee
+          this, save the file as an 8-bit indexed image &#151; most graphics programs
+          will allow you to select the appropriate system palette. It will be
+          very clear if you haven't done this correctly &#151; the map will still
+          display in RealWorld, but the colors will be wrong in 256-color mode.</font>
+        <p><font color="#000000" face="Arial, Helvetica, sans-serif" size="2">If
+          the file does not contain a 256-color palette &#151; </font><font face="Arial, Helvetica, sans-serif" size="2">e.g.
+          if you are using a 16-bit or 24-bit PICT, or a PICT in vector format
+          <font color="#000000">&#151; </font>Realpolitik will use the standard
+          Macintosh system palette. Due to this, you may see some dithering effects.<br>
+          &nbsp; </font></p>
+        <p><font face="Arial, Helvetica, sans-serif" color="#000000" size="2"><b>VariantBW.pct
+          or VariantBW.bmp</b></font>
+        <p><font face="Arial, Helvetica, sans-serif" color="#000000" size="2">This
+          is a graphics file in the proper graphics format. For Windows it can
+          be an 8-bit (256 color) BMP or compressed BMP. For Macintosh it can
+          be 8-bit BMP, compressed BMP or PICT. The PICT can be a vector-based
+          PICT (e.g. through Freehand) or a bitmap-based PICT (e.g. through Photoshop).
+          You can use any graphics editing software to create this file, as long
+          as it can save it in the correct format.</font>
+        <p><font face="Arial, Helvetica, sans-serif" color="#000000" size="2">This
+          is the physical map that you see when you are using RealWorld if you
+          have no color. This file is used as the map when printing on a black
+          and white printer.</font> </p>
+        <p><font face="Arial, Helvetica, sans-serif" color="#000000" size="2">This
+          file should be monochrome (black and white).</font> <font face="Arial, Helvetica, sans-serif" size="2"><br>
+          &nbsp; </font>
+        <p><font face="Arial, Helvetica, sans-serif" size="2"><b><font color="#000000">Variant-Borders.pct
+          or Variant-Borders.bmp</font></b> </font>
+        <p><font face="Arial, Helvetica, sans-serif" color="#000000" size="2">This
+          is a graphics file in the proper graphics format. For Windows it can
+          be an 8-bit (256 color) BMP or compressed BMP. For Macintosh it can
+          be 8-bit BMP, compressed BMP or PICT. The PICT can be a vector-based
+          PICT (e.g. through Freehand) or a bitmap-based PICT (e.g. through Photoshop).
+          You can use any graphics editing software to create this file, as long
+          as it can save it in the correct format.</font>
+        <p><font face="Arial, Helvetica, sans-serif" color="#000000" size="2">The
+          Region Tool uses this file to help you create the Variant.rgn file.
+          Once this has been accomplished, this file may be discarded; RealWorld
+          doesn't actually use this file.</font>
+        <p><font face="Arial, Helvetica, sans-serif" color="#000000" size="2">For
+          best results, this file should be monochrome.</font> <font color="#000000" face="Arial, Helvetica, sans-serif" size="2"><br>
+          &nbsp; </font>
+        <p><font face="Arial, Helvetica, sans-serif" size="2"><b>Variant.var</b>
+          </font>
+        <p><font face="Arial, Helvetica, sans-serif" size="2"><font color="#000000">This
+          should be a text file. This file is the head honcho of all the variant
+          support files, and pulls everything together for a given variant. It
+          defines what the other files are and in some cases where they are located
+          (if not in the variant's own folder). This is the one file that will
+          always be unique to a given variant.</font></font>
+        <p><font face="Arial, Helvetica, sans-serif" size="2">Line by line, the
+          Variant.var file consists of:</font>
+        <blockquote><font face="Arial, Helvetica, sans-serif" size="2"><i>Version</i>:
+          For now this should be 1. If the file format changes in a future version
+          of RealWorld, this will be used to distinguish between the old and
+          new formats.</font>
+          <p><font face="Arial, Helvetica, sans-serif" size="2"><i>Name</i>: <font color="#000000">The
+            name of the variant. This is used by RealWorld as the name displayed
+            for the variant in the "Variants" menu.</font></font>
+          <p><font face="Arial, Helvetica, sans-serif" size="2"><i>MapData</i>:
+            This tells RealWorld which Variant.map file is the one to use for
+            this variant.</font>
+          <p><font face="Arial, Helvetica, sans-serif" size="2"><i>Countries</i>:
+            This tells RealWorld which Variant.cnt file is the one to use for
+            this variant.</font>
+          <p><font face="Arial, Helvetica, sans-serif" size="2"><i>Game</i>: This
+            tells RealWorld which Variant.gam file is the one to use for this
+            variant.</font>
+          <p><font face="Arial, Helvetica, sans-serif" size="2"><i>BWMap</i>:
+            This tells RealWorld which VariantBW.{pct,bmp} file is the one to
+            use for this variant. Do not include the file extension (.pct, .pic,
+            or .bmp) in this file name. RealWorld will append the appropriate
+            one for the operating system.</font>
+          <p><font face="Arial, Helvetica, sans-serif" size="2"><i>ColorMap</i>:
+            This tells RealWorld which Variant.{pct,bmp} file is the one to
+            use for this variant. Do not include the file extension (.pct, .pic,
+            or .bmp) in this file name. RealWorld will append the appropriate
+            one for the operating system.</font>
+          <p><font face="Arial, Helvetica, sans-serif" size="2"><i>Regions</i>:
+            This tells RealWorld which Variant.rgn file is the one to use for
+            this variant.</font>
+          <p><font face="Arial, Helvetica, sans-serif" size="2"><i>Info</i>: This
+            tells RealWorld which Variant.txt file is the one to use for this
+            variant.</font>
+          <p><font face="Arial, Helvetica, sans-serif" size="2"><i>Build</i>:
+            This tells RealWorld which build rule to use for this variant. It
+            can be one of three options:</font>
+          <blockquote><font face="Arial, Helvetica, sans-serif" size="2">Standard
+            - a player may only build on her vacant home centers</font>
+            <p><font face="Arial, Helvetica, sans-serif" size="2">Aberration -
+              a player may build on any supply center he owns which is vacant
+              as long as he still owns at least one of his original home centers</font>
+            <p><font face="Arial, Helvetica, sans-serif" size="2">Chaos - a player
+              may build on any supply center that she owns that is vacant</font>
+          </blockquote>
+          <font face="Arial, Helvetica, sans-serif" size="2"><i>Centers</i>: This
+          is an integer that tells RealWorld how many supply centers are needed
+          to win the game for the variant. If this is 0, then the number of supply
+          centers needed to win is assumed to be a simple majority. This is calculated
+          by taking the total number of supply centers, divided by two, rounded
+          down, plus one. So for a variant with 35 supply centers: 35 divided
+          by 2 is 17.5, rounded down is 17, plus one is 18.</font>
+          <p><font face="Arial, Helvetica, sans-serif" size="2"><i>Flags</i>:
+            The following flags are currently supported:
+            <blockquote>
+            <p>4: variant uses wings
+            <p>8: variant uses large icons (icons are not transformed to standard size)
+            </blockquote>
+            Flags may be added.</font>
+        </blockquote>
+        <p><font face="Arial, Helvetica, sans-serif" size="2"><br>
+          <b>Making the Variant.var File Work With Shared Files</b> </font>
+        <p><font face="Arial, Helvetica, sans-serif" size="2">As you can see,
+          the information on most of the lines of the Variant.var file is generally
+          the name of another file which RealWorld uses to run the variant.
+          Assuming that the referenced file is in the same variant folder as the
+          Variant.var file nothing more is needed. But the Variant.var file can
+          also reference files that are in other folders and are used by different
+          variants (and therefore have different names).</font>
+        <p><font face="Arial, Helvetica, sans-serif" size="2">For example, the
+          variant "1898" uses the same map as the standard game, but each country
+          starts with only one unit. The only files that are different than the
+          standard game are the 1898.var, the 1898.gam and the 1898.txt files.
+          The 1898.var file must be located in the 1898 folder. All the other
+          files could be located in any other folder. But in the case of the 1898.gam
+          and 1898.txt files, it doesn't really make sense to place it anywhere
+          other than the 1898 folder.</font>
+        <p><font face="Arial, Helvetica, sans-serif" size="2">So if you were creating
+          1898 from scratch, the first approach you could use is to make copies
+          of all the files from the Standard folder, place them in the 1898 folder,
+          and change all their names from "Standard.xxx" to "1898.xxx". Then you
+          would open the 1898.var file (which used to be the Standard.var file)
+          and replace every occurrence of "Standard" with "1898". You would then
+          open the 1898.gam file (which used to be the Standard.gam file) and
+          edit it appropriately, and the same for the 1898.txt file.</font>
+        <p><font face="Arial, Helvetica, sans-serif" size="2">Or you could use
+          another approach. Rather than copying all those "Standard" files to
+          the 1898 folder, you could use the 1898.var file to refer to the needed
+          files in their locations in the Standard folder. For example, the MapData
+          line in the 1898.var file would read:</font>
+        <blockquote><font face="Arial, Helvetica, sans-serif" size="2">MapData:
+          Standard/Standard.map</font></blockquote>
+        <font face="Arial, Helvetica, sans-serif" size="2">The "Standard" before
+        the slash is telling RealWorld to look in the Standard folder. The "Standard.map"
+        after the slash is telling Realpolitik what file to use. But even using
+        this approach, the 1898.var file still needs to be in the 1898 folder,
+        and 1898.gam and 1898.txt files might as well be in the 1898 folder.</font>
+        <p><font face="Arial, Helvetica, sans-serif" size="2">Sharing files is
+          generally a good idea. First of all, if there is an error in a file,
+          such as a Variant.map file which is used by many variants, it can be
+          fixed in one place. Secondly, it saves space.</font> <font face="Arial, Helvetica, sans-serif" size="2"><br>
+          &nbsp; </font>
+        <p><font face="Arial, Helvetica, sans-serif" size="2"><b>The Region Tool</b>
+          </font>
+        <p><font face="Arial, Helvetica, sans-serif" size="2">The Region Tool
+          is a program included with Realpolitik that you use to create the Variant.rgn
+          file, which is used by RealWorld to know where you are when you click
+          on the map. To use this, you need a Variant.map file, a Variant.pct/Variant.bmp
+          file and a Variant-Borders.pct/Variant-Borders.bmp file and they all
+          need to be located in the same folder.</font>
+        <p><font face="Arial, Helvetica, sans-serif" size="2">The Variant-Borders.pct/bmp
+          file will be used in the background to show the Region Tool where the
+          borders are for each space, and the Variant.pct/bmp file will be used
+          to show you what the map will look like in RealWorld as you work.
+          The Variant-Borders.pct/bmp file has to be an exact replica of the Variant.pct/bmp
+          file but with all the color and extra stuff removed. In other words,
+          the Variant-Borders.pct/bmp file should show nothing but the borders
+          and these borders have to line up exactly with the borders of the Variant.pct/bmp
+          file. You also need to make sure there are no gaps in your borders or
+          the Region Tool will treat two spaces connected by a gap, as one space.
+          Be sure that the spaces in the Variant-Borders.pct/bmp file have a white
+          background or fill. If you use "no fill" as opposed to a white fill,
+          The Region Tool will not be able to scan the spaces. If you have bi-coastal
+          spaces, you will need to draw a line down the middle of the space in
+          the Variant-Borders.pct/bmp file to represent the split between the
+          two coastal areas for fleet placement. The Region Tool will automatically
+          join the two coastal areas to create the entire space. Note that the
+          line between the two coastal areas must be only one pixel wide for this
+          to work properly. The Region Tool can currently not deal with tricoastal regions.
+          These have to be constructed by hand.</font>
+        <p><font face="Arial, Helvetica, sans-serif" size="2">When you open the
+          Region Tool, you will get the "open file" dialog box. Find and open
+          the Variant.map file. The two graphic files will be opened by the Region
+          Tool automatically assuming they are in their correct location which
+          is in the same folder as the Variant.map file.</font>
+        <p><font face="Arial, Helvetica, sans-serif" size="2">In the lower left-hand
+          corner of the window, it will ask you to click on a space. Click anywhere
+          within the correct space on the map to identify it. The space will highlight
+          briefly and then the lower left-hand corner will ask you to click on
+          the location where you want the space's name to be. A label with the
+          name will appear showing the permanent location of the name. Then the
+          left-hand corner will ask you to click on the location where you want
+          the unit in that space to be. A unit will appear showing the permanent
+          location for the unit in that space. It will then ask you to click on
+          the next space. Take advantage of the undo feature if you click in the
+          wrong space or if you don't like your initial placement of units or
+          names.</font>
+        <p><font face="Arial, Helvetica, sans-serif" size="2">When you are done
+          with all the spaces, the text box will clear, and you will be able to
+          save the Variant.rgn file. Remember to place it in the same variant
+          folder with the rest of the files for that variant.</font>
+        <p><font face="Arial, Helvetica, sans-serif" size="2">Special fleet placement
+        is as yet not supported by the region tool. The relevant coordinates have
+        to be manually inserted into the .rgn-file.</font>
+           <font face="Arial, Helvetica, sans-serif" size="2"><br>
+          &nbsp; </font>
+        <p><font face="Arial, Helvetica, sans-serif" size="2"><b><font color="#000000">Icons</font></b>
+          </font>
+        <p><font face="Arial, Helvetica, sans-serif" color="#000000" size="2">You
+          can modify unit icons to your heart's content. The icons are the standard
+          icon file formats used by the respective computer platforms. Windows
+          uses files with the .ico extension and Macs use files with icon resources
+          contained within. You can edit these icons with the normal icon editing
+          tools widely available for each platform. </font>
+        <p><font face="Arial, Helvetica, sans-serif" color="#000000" size="2">There
+          are two ways to modify icons in RealWorld.</font>
+        <p><font face="Arial, Helvetica, sans-serif" color="#000000" size="2"><i>Global
+          icons</i>: Realpolitik comes with a set of icons that is used for any
+          variant that does not have specific icons within the variant's folder
+          (including the Standard game). On the Mac the global "Icons" file must
+          be located in the Realpolitik folder itself. The icons contained this
+          file must keep the same resource names as in the original. On the PC
+          the global "Icon Files" folder must also be located in the Realpolitik
+          folder.</font><font face="Arial, Helvetica, sans-serif" size="2"> Similarly,
+          the files in this folder must keep the same names. </font>
+        <p><font color="#000000" face="Arial, Helvetica, sans-serif" size="2">Global
+          icons consist of three parts: a color version for each unit type (e.g.
+          &quot;RedArmy&quot;, &quot;RedFleet&quot;, &quot;BlueArmy&quot;, etc.),
+          a black and white (or patterned) version for each unit (e.g. &quot;RandomArmy&quot;,
+          &quot;RandomFleet&quot;, &quot;QuiltArmy&quot;, etc.), and a letter
+          that can be stamped on either of the previous two. Realpolitik combines
+          these to create the proper icon for a given set of parameters that apply
+          to countries differently in different variants. For example, since England
+          is blue in Standard the icons will be blue and have the letter "E" stamped
+          on them. Since Japan is green in Colonial the icons will be green and
+          have the letter "J" stamped on them. The patterned icons are similarly
+          used for black and white displays and printers. Considering all the
+          possible combinations of colors and letters (not to mention patterns)
+          this allows Realpolitik to store a much smaller number of actual icons.
+          When combining icon layers to make the final unit icon, Realpolitik
+          uses the "color", "pattern" and "initial" information from the Variant.cnt
+          file.</font>
+        <p><font face="Arial, Helvetica, sans-serif" color="#000000" size="2">You
+          may edit the supplied global icons. Note that the letter icons are optional,
+          so if you wish you may delete them if they don't fit with your new icons
+          (however, the Chaos variant may be a little confusing). Of course it's
+          always a good idea to work on copies of the icon files until you are
+          sure you like the results.</font>
+        <p><font color="#000000" face="Arial, Helvetica, sans-serif" size="2"><i>Variant
+          specific icons</i>: If you have icons that you want to use only for
+          a certain variant, you would place those icon files in the sub-folder
+          for that variant. </font>
+        <p><font face="Arial, Helvetica, sans-serif" color="#000000" size="2">For
+          Macs, the file containing the icon resources would be named "Icons".
+          The icon resources themselves all have to be named correctly as above:
+          "RedArmy", "RedFleet", "BlueArmy", etc. The colors used must correspond
+          to the colors defined for the countries in the Variant.cnt file. If
+          you wish the icons to appear under black and white enviroments (i.e.
+          on a black and white printer, or a grayscale screen), you may want to
+          consider making icons for the appropriate patterns as well, however,
+          they aren't required.. The letter icons aren't needed unless you wish
+          to make a variant with more countries than colors &#151; for example,
+          Chaos.</font>
+        <p><font face="Arial, Helvetica, sans-serif" color="#000000" size="2">For
+          PCs all the icon files (one file for each icon) would be contained within
+          a folder named "Icon Files". This folder is placed in the sub-folder
+          for that variant. The individual icon files should be named "RedArmy.ico",
+          "RedFleet.ico", "BlueArmy.ico", etc. Again, the colors and patterns
+          (if any) used must correspond to the colors defined for the countries
+          in the Variant.cnt file. Letters, as before, are optional.</font>
+        <p><font color="#000000" face="Arial, Helvetica, sans-serif" size="2">&nbsp;
+          </font>
+        <p><font color="#000000" face="Arial, Helvetica, sans-serif" size="2"><b>Testing
+          Your Variant</b> </font>
+        <p><font face="Arial, Helvetica, sans-serif" color="#000000" size="2">If
+          you're lucky your variant is based on a Variant.map file that already
+          exists. Otherwise you are faced with the prospect of creating this file
+          by hand. As mentioned, not a difficult process (once you understand
+          the syntax), but still a tedious one and you are likely to make errors.
+          Once you have completed your Variant.map file, you will want to test
+          it, but this can be a daunting task considering all the possible moves
+          to adjacent spaces for each space on the map. But there is a somewhat
+          painless way to test the Variant.map file. It's worth the time spent,
+          especially if you did create the file by hand.</font>
+        <p><font face="Arial, Helvetica, sans-serif" color="#000000" size="2">Once
+          your variant is done, start a game in RP. Then use the map edit mode
+          to remove all the units of all but one country. Also remove the ownership
+          of all the supply centers except the ones owned by the remaining country.
+          Then take one army from the remaining country and move it around the
+          whole board, one space at a time, testing all the adjacent spaces in
+          both directions for each space. Then do the same thing with a fleet.
+          You should even make sure that fleets can not move into adjacent land-locked
+          spaces nor armies into adjacent sea spaces.</font>
+        <p><font face="Arial, Helvetica, sans-serif" color="#000000" size="2">Once
+          all the home supply centers of the country being "played" are occupied
+          with idle units, you won't even have to concern yourself with doing
+          builds, so the testing progresses fairly quickly. This could take an
+          hour or two, but that's not too bad considering the benefit of finding
+          any errors.</font>
+        <p><font face="Arial, Helvetica, sans-serif" color="#000000" size="2">The
+          only thing that does not get checked using this method is unintentional
+          distant adjacencies. For example, if the Black Sea were accidentally
+          made adjacent to Rome then you won't find such an error. But checking
+          all those possible combinations for something that's not likely to happen
+          anyway, goes beyond the point of diminishing returns.</font>
+
+        <p>&nbsp;
+      </td>
+    </tr>
+  </table>
+  <font face="Arial, Helvetica, sans-serif"><i><font size="-1">Original File &copy;
+  2001 <font face="Arial, Helvetica, sans-serif" size="2">Don Hessong</font> and
+  Jim Van Verth<br>
+<font face="Arial, Helvetica, sans-serif"><i><font size="-1">Additions &copy;
+  2005 <font face="Arial, Helvetica, sans-serif" size="2">Dirk Br&uuml;ggemann</font><br>
+  </font></i></font>
+</center>
+</body>
+
+</html>

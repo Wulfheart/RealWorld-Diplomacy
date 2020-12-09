@@ -1,0 +1,655 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_EDITRULES, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 345
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 268
+    END
+
+    IDD_LOADING, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 201
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 15
+    END
+
+    IDD_STATUS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 374
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 250
+    END
+
+    IDD_EDITSEASON, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 118
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 56
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_EDITRULES DIALOGEX 0, 0, 352, 275
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Edit Rules"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "Enable Wings",IDC_CHECK_WINGS,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,25,25,76,18
+    CONTROL         "Standard",IDC_PARADOX_STANDARD,"Button",
+                    BS_AUTORADIOBUTTON | WS_GROUP,139,28,54,12
+    CONTROL         "Szykman",IDC_PARADOX_SZYKMAN,"Button",
+                    BS_AUTORADIOBUTTON,201,29,54,12
+    CONTROL         "Standard",IDC_BM_STANDARD,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP,25,66,64,12
+    CONTROL         "Aberration",IDC_BM_ABERRATION,"Button",
+                    BS_AUTORADIOBUTTON,83,66,64,12
+    CONTROL         "Chaos",IDC_BM_CHAOS,"Button",BS_AUTORADIOBUTTON,145,66,
+                    54,12
+    CONTROL         "Hanse",IDC_BM_HANSE,"Button",BS_AUTORADIOBUTTON,201,66,
+                    52,12
+    CONTROL         "by unit that stays in canal center",IDC_CANAL_STAY,
+                    "Button",BS_AUTORADIOBUTTON | WS_DISABLED | WS_GROUP,31,
+                    157,155,13
+    CONTROL         "by holding or supporting unit in canal center",
+                    IDC_CANAL_HOLD,"Button",BS_AUTORADIOBUTTON,31,174,155,13
+    CONTROL         "by any unit in canal center",IDC_CANAL_ANY,"Button",
+                    BS_AUTORADIOBUTTON,31,191,125,13
+    CONTROL         "by owner of canal center",IDC_CANAL_OWNER,"Button",
+                    BS_AUTORADIOBUTTON,31,208,102,13
+    CONTROL         "no passage control",IDC_CANAL_NONE,"Button",
+                    BS_AUTORADIOBUTTON,30,225,89,13
+    CONTROL         "Wings",IDC_CANAL_WING,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,217,161,98,10
+    CONTROL         "Convoys",IDC_CANAL_CONVOY,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,217,178,98,10
+    CONTROL         "Supports",IDC_CANAL_SUPPORT,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,217,196,98,10
+    CONTROL         "Retreats",IDC_CANAL_RETREAT,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,217,213,98,10
+    DEFPUSHBUTTON   "OK",IDOK,295,7,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,295,24,50,14
+    GROUPBOX        "Units",IDC_STATIC,14,14,102,35
+    GROUPBOX        "Canals",IDC_CANALBOX,14,132,323,126
+    GROUPBOX        "Passage Permission",IDC_CANALPERMISSION,23,146,175,100
+    GROUPBOX        "Passage possible for",IDC_PASSAGEPERMISSION,207,146,119,
+                    88
+    GROUPBOX        "Paradox Resolution",IDC_STATIC,131,14,135,35
+    PUSHBUTTON      "Reset Values",IDC_BUTTON_DEFAULT,295,46,50,31,
+                    BS_MULTILINE
+    GROUPBOX        "Build Mode",IDC_STATIC,14,55,252,31
+    GROUPBOX        "Special Rules",IDC_SPECIAL_RULES,14,92,324,36
+    CONTROL         "Transformation of Armies / Fleets",IDC_CHECK_TRAFO,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,23,103,126,19
+    CONTROL         "Emergency Measures Rule",IDC_CHECK_ERM,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,180,103,126,19
+END
+
+IDD_LOADING DIALOG  0, 0, 208, 22
+STYLE DS_SETFONT | DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_VISIBLE
+FONT 8, "MS Sans Serif"
+BEGIN
+    CTEXT           "Loading map... please wait",IDC_LOADING,47,7,113,10,
+                    SS_CENTERIMAGE
+END
+
+IDD_STATUS DIALOG  0, 0, 381, 255
+STYLE DS_SETFONT | DS_MODALFRAME | DS_SETFOREGROUND | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Status"
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "Supply Centers",IDC_SUPPLYCENTERS,7,7,367,153
+    LISTBOX         IDC_CENTERSLIST,13,16,355,139,LBS_NOINTEGRALHEIGHT | 
+                    LBS_EXTENDEDSEL | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Dislodged Units",IDC_DISLODGEDUNITS,7,170,367,59
+    LISTBOX         IDC_DISLODGELIST,13,179,355,44,LBS_NOINTEGRALHEIGHT | 
+                    LBS_EXTENDEDSEL | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Expecting orders",IDC_EXPECTING,7,237,361,13
+END
+
+IDD_INFO DIALOG  0, 0, 448, 250
+STYLE DS_SETFONT | DS_MODALFRAME | DS_SETFOREGROUND | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Info"
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "About this variant:",IDC_ABOUTVARIANT,7,7,434,236
+    LISTBOX         IDC_TEXTLIST,11,16,425,223,LBS_NOINTEGRALHEIGHT | 
+                    LBS_EXTENDEDSEL | WS_VSCROLL | WS_TABSTOP
+END
+
+IDD_PRINT DIALOG  40, 40, 120, 40
+STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+BEGIN
+    CTEXT           "Cancel Printing",-1,4,6,120,12
+    DEFPUSHBUTTON   "Cancel",IDCANCEL,44,22,32,14,WS_GROUP
+END
+
+IDD_EDITSEASON DIALOG  0, 0, 125, 63
+STYLE DS_SETFONT | DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Edit Season"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,7,42,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,68,42,50,14
+    CONTROL         "Spring",IDC_SPRING,"Button",BS_AUTORADIOBUTTON,16,16,36,
+                    10
+    CONTROL         "Fall",IDC_FALL,"Button",BS_AUTORADIOBUTTON,16,27,27,10
+    EDITTEXT        IDC_YEAR,71,16,40,14,ES_AUTOHSCROLL | ES_NUMBER
+    GROUPBOX        "Season",IDC_SEASON,10,7,48,34
+    GROUPBOX        "Year",IDC_SYEAR,67,7,48,29
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON1               ICON                    "RWDoc.ico"
+REALWORLD               ICON                    "RealWorld.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+REALWORLD MENU 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New...\tCtrl+N",             ID_FILE_NEW
+        MENUITEM "&Open...\tCtrl+O",            ID_FILE_OPEN
+        MENUITEM "&Close Window",               ID_FILE_CLOSE
+        MENUITEM SEPARATOR
+        MENUITEM "&Save\tCtrl+S",               ID_FILE_SAVE
+        MENUITEM "Save &As...",                 ID_FILE_SAVEAS
+        MENUITEM "Save As DPY ...",             40005
+        MENUITEM "Save BMP...",                 ID_FILE_SAVEBMP
+        MENUITEM "Save R&esults...",            ID_FILE_SAVEREPORT
+        MENUITEM "&Revert",                     ID_FILE_REVERT
+        MENUITEM SEPARATOR
+        MENUITEM "&Print\tCtrl+P",              ID_FILE_PRINT, GRAYED
+        MENUITEM "Page Set&up...",              ID_FILE_PAGESETUP, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "&Quit\tCtrl+Q",               ID_FILE_QUIT
+    END
+    POPUP "&Edit"
+    BEGIN
+        MENUITEM "&Undo\tCtrl+Z",               ID_EDIT_UNDO
+        MENUITEM SEPARATOR
+        MENUITEM "Cu&t\tCtrl+X",                ID_EDIT_CUT
+        MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY
+        MENUITEM "&Paste\tCtrl+V",              ID_EDIT_PASTE
+        MENUITEM "Clear\tDel",                  ID_EDIT_CLEAR
+    END
+    POPUP "&Map"
+    BEGIN
+        MENUITEM "&Orders",                     ID_MAP_ORDERS, CHECKED
+        MENUITEM "&Units",                      ID_MAP_UNITS, CHECKED
+        MENUITEM "&Supply Centers",             ID_MAP_SUPPLYCENTERS
+        , CHECKED
+        MENUITEM "Other Land",                  ID_MAP_OTHERLAND
+        MENUITEM "&Names",                      ID_MAP_NAMES
+        MENUITEM SEPARATOR
+        MENUITEM "&Edit Map\tCtrl+E",           ID_MAP_EDITMAP, GRAYED
+        MENUITEM "E&dit Season",                ID_MAP_EDITSEASON
+        MENUITEM "Edit &Rules",                 ID_MAP_EDITRULES, GRAYED
+    END
+    POPUP "&Orders"
+    BEGIN
+        MENUITEM "&Load Text...\tCtrl+L",       ID_ORDERS_LOADORDERS
+        MENUITEM "&Overwrite When Loading",     ID_ORDERS_OVERWRITEWHENLOADING
+
+        MENUITEM "&Resolve\tCtrl+R",            ID_ORDERS_RESOLVE
+        MENUITEM "&Commit\tCtrl+K",             ID_ORDERS_COMMIT
+        MENUITEM "Add Units To Orders",         ID_ORDERS_ADDUNITTOORDER
+        MENUITEM "Ignore Convoy Routes",        ID_ORDERS_IGNORECONVOYROUTES
+    END
+    POPUP "&History"
+    BEGIN
+        MENUITEM "&Previous\tShift+Tab",        ID_HISTORY_PREVIOUS
+        MENUITEM "&Next\tTab",                  ID_HISTORY_NEXT
+        MENUITEM "&Branch\tCtrl+B",             ID_HISTORY_BRANCH
+    END
+    POPUP "&Variants"
+    BEGIN
+        MENUITEM "Standard",                    ID_VARIANTS_STANDARD
+    END
+    POPUP "&Windows"
+    BEGIN
+        MENUITEM "&Orders\tCtrl+D",             ID_WINDOWS_ORDERS
+        MENUITEM "&Status\tCtrl+T",             ID_WINDOWS_STATUS
+        MENUITEM "&Info\tCtrl+I",               ID_WINDOWS_INFO
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "About &RealWorld...",         ID_HELP_ABOUTREALPOLITIK
+        MENUITEM "&Acknowledgements...",        ID_HELP_ACKNOWLEDGEMENTS
+    END
+END
+
+kEditMapMenuID MENU 
+BEGIN
+    POPUP ""
+    BEGIN
+        MENUITEM "Unit",                        kEditUnitItem
+        MENUITEM "Supply",                      kEditSupplyItem
+    END
+END
+
+kEditUnitMenu1ID MENU 
+BEGIN
+    POPUP ""
+    BEGIN
+        MENUITEM "None",                        kNoneItem
+        MENUITEM "Army",                        kArmyItem
+        MENUITEM "Fleet",                       kFleetItem
+        MENUITEM "Wing",                        kWingItem
+    END
+END
+
+kEditUnitMenu2ID MENU 
+BEGIN
+    POPUP ""
+    BEGIN
+        MENUITEM "None",                        kNoneItem
+        MENUITEM "Army",                        kArmyItem
+        MENUITEM "Fleet",                       kFleetItem
+        MENUITEM "Fleet",                       40105
+        MENUITEM "Wing",                        kWingItem
+    END
+END
+
+kEditSeasonMenu1ID MENU 
+BEGIN
+    POPUP ""
+    BEGIN
+        MENUITEM "Spring",                      kEditSpringItem
+        MENUITEM "Fall",                        kEditFallItem
+    END
+END
+
+kEditUnitMenu3ID MENU 
+BEGIN
+    POPUP ""
+    BEGIN
+        MENUITEM "None",                        kNoneItem
+        MENUITEM "Army",                        kArmyItem
+        MENUITEM "Fleet",                       kFleetItem
+        MENUITEM "Fleet",                       kFleet2Item
+        MENUITEM "Fleet",                       40106
+        MENUITEM "Wing",                        kWingItem
+    END
+END
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_ACCELERATOR1 ACCELERATORS 
+BEGIN
+    VK_DELETE,      ID_EDIT_CLEAR,          VIRTKEY, NOINVERT
+    VK_TAB,         ID_HISTORY_NEXT,        VIRTKEY, NOINVERT
+    VK_TAB,         ID_HISTORY_PREVIOUS,    VIRTKEY, SHIFT, NOINVERT
+    "^B",           ID_HISTORY_BRANCH,      ASCII,  NOINVERT
+    "^C",           ID_EDIT_COPY,           ASCII,  NOINVERT
+    "^D",           ID_WINDOWS_ORDERS,      ASCII,  NOINVERT
+    "^E",           ID_MAP_EDITMAP,         ASCII,  NOINVERT
+    "\t",           ID_WINDOWS_INFO,        ASCII,  NOINVERT
+    "^K",           ID_ORDERS_COMMIT,       ASCII,  NOINVERT
+    "^L",           ID_ORDERS_LOADORDERS,   ASCII,  NOINVERT
+    "^N",           ID_FILE_NEW,            ASCII,  NOINVERT
+    "^O",           ID_FILE_OPEN,           ASCII,  NOINVERT
+    "^P",           ID_FILE_PRINT,          ASCII,  NOINVERT
+    "^Q",           ID_FILE_QUIT,           ASCII,  NOINVERT
+    "^R",           ID_ORDERS_RESOLVE,      ASCII,  NOINVERT
+    "^S",           ID_FILE_SAVE,           ASCII,  NOINVERT
+    "^T",           ID_WINDOWS_STATUS,      ASCII,  NOINVERT
+    "^V",           ID_EDIT_PASTE,          ASCII,  NOINVERT
+    "^X",           ID_EDIT_CUT,            ASCII,  NOINVERT
+    "^Z",           ID_EDIT_UNDO,           ASCII,  NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 2,0,6,2
+ PRODUCTVERSION 2,0,6,2
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x21L
+#else
+ FILEFLAGS 0x20L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "Comments", "RealWorld game adjudicator and viewer (Extension of Realpolitik for Wings)"
+            VALUE "CompanyName", "The Realpolitik Development Team (Additions by Dirk Brüggemann)"
+            VALUE "FileDescription", "RealWorld"
+            VALUE "FileVersion", "2, 0, 6, 2"
+            VALUE "InternalName", "RealWorld"
+            VALUE "LegalCopyright", "Copyright © 2001-2010"
+            VALUE "OriginalFilename", "RealWorld.exe"
+            VALUE "ProductName", "RealWorld - Realpolitik on the Wing"
+            VALUE "ProductVersion", "2, 0, 6, 2"
+            VALUE "SpecialBuild", "RealWorld"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    kMoveTypeStrings01      "None"
+    kMoveTypeStrings02      " -"
+    kMoveTypeStrings03      " Supports"
+    kMoveTypeStrings04      " Hold"
+    kMoveTypeStrings05      " Convoys"
+    kMoveTypeStrings06      "Build"
+    kMoveTypeStrings07      "Remove"
+END
+
+STRINGTABLE 
+BEGIN
+    kMoveTypeStrings08      "builds pending"
+    kMoveTypeStrings09      "Build waived"
+    kMoveTypeStrings10      "Defaults, removing"
+    kMoveTypeStrings11      "disband"
+    kMoveTypeStrings12      ", no move received"
+    kMoveTypeStrings13      ", no move received, disbanding"
+    kMoveTypeStrings14      "retreat"
+    kMoveTypeStrings15      "stat"
+END
+
+STRINGTABLE 
+BEGIN
+    kErrorStrings01         "No error"
+    kErrorStrings02         "Bad ROMs"
+    kErrorStrings03         "Old system"
+    kErrorStrings04         "Bad system"
+    kErrorStrings05         "No menu bar"
+    kErrorStrings06         "Bad dialog"
+    kErrorStrings07         "Bad game data"
+    kErrorStrings08         "Bad map data"
+    kErrorStrings09         "Bad country data"
+    kErrorStrings10         "Bad image"
+    kErrorStrings11         "Out of memory"
+    kErrorStrings12         "Error reading file"
+    kErrorStrings13         "Can't find string"
+    kErrorStrings14         "Bad menu"
+    kErrorStrings15         "Printing error"
+END
+
+STRINGTABLE 
+BEGIN
+    kErrorStrings16         "No TEXT element in scrap"
+    kErrorStrings17         "Can't find temp file volume"
+    kErrorStrings18         "Can't create temp file"
+    kErrorStrings19         "Can't open temp file"
+    kErrorStrings20         "Can't write to temp file"
+    kErrorStrings21         "Bad polygon data"
+    kErrorStrings22         "Bad variant data"
+    kErrorStrings23         "Bad history data"
+    kErrorStrings24         "Unexpected error"
+END
+
+STRINGTABLE 
+BEGIN
+    kSpecialStrings01       "Foobar"
+    kSpecialStrings02       "Save Game"
+    kSpecialStrings03       "Show Map"
+    kSpecialStrings04       "Hide Map"
+    kSpecialStrings05       "Show Orders"
+    kSpecialStrings06       "Hide Orders"
+    kSpecialStrings07       "PrintStringID"
+END
+
+STRINGTABLE 
+BEGIN
+    kSpecialStrings08       "No further orders accepted."
+    kSpecialStrings09       "Ownership:"
+    kSpecialStrings10       "Unowned:"
+    kSpecialStrings11       "Adjustments:"
+    kSpecialStrings12       "Supp %2d Unit %2d Remove %2d"
+    kSpecialStrings13       "Supp %2d Unit %2d Build %2d"
+    kSpecialStrings14       "Expecting retreats "
+    kSpecialStrings15       "Expecting builds "
+    kSpecialStrings16       "Expecting moves "
+    kSpecialStrings17       "for "
+    kSpecialStrings18       "Editing..."
+    kSpecialStrings19       "Fleet"
+    kSpecialStrings20       "Map"
+    kSpecialStrings21       "Realpolitik"
+    kSpecialStrings22       "&Undo\tCtrl+Z"
+    kSpecialStrings23       "&Undo Resolve\tCtrl+Z"
+END
+
+STRINGTABLE 
+BEGIN
+    kSpecialStrings24       "&Undo Order\tCtrl+Z"
+    kSpecialStrings25       "Invalid Orders"
+    kSpecialStrings26       "Army"
+    kSpecialStrings27       "Save Map"
+    kSpecialStrings28       "This will clear all following history.  Are you sure you want to do this?"
+    kSpecialStrings29       "This will clear any existing orders.  Are you sure you want to do this?"
+    kSpecialStrings30       "These orders haven't been resolved yet.  Please resolve or save results for a previous phase."
+    kSpecialStrings31       "This will overwrite resolved orders.  Are you sure you want to do this?"
+    kSpecialStrings32       "Save Results..."
+    kSpecialStrings33       "Save Status..."
+    kSpecialStrings34       "No dislodge info found -- removing resolution."
+    kSpecialStrings35       "Supp %2d (Blocked %2d) Unit %2d Remove %2d"
+    kSpecialStrings36       "Supp %2d (Blocked %2d) Unit %2d Build %2d"
+END
+
+STRINGTABLE 
+BEGIN
+    kDislodgeStrings01      " can retreat to "
+    kDislodgeStrings02      " no moves received, disbanded"
+    kDislodgeStrings03      " no retreat received, disbanded"
+    kDislodgeStrings04      " given illegal retreat, disbanded"
+    kDislodgeStrings05      " has no retreats, disbanded"
+END
+
+STRINGTABLE 
+BEGIN
+    kPatternNames01         "Random"
+    kPatternNames02         "ThinDiag"
+    kPatternNames03         "Hash"
+    kPatternNames04         "Gray"
+    kPatternNames05         "Quilt"
+    kPatternNames06         "Sparse"
+    kPatternNames07         "Diag"
+END
+
+STRINGTABLE 
+BEGIN
+    kPatternNames08         "ThinHoriz"
+    kPatternNames09         "Horiz"
+    kPatternNames10         "Vert"
+    kPatternNames11         "Stripe"
+    kPatternNames12         "Flood"
+    kPatternNames13         "None"
+    kPatternNames14         "Empty"
+END
+
+STRINGTABLE 
+BEGIN
+    kColorNames01           "Black"
+    kColorNames02           "Blue"
+    kColorNames03           "Brown"
+    kColorNames04           "Cyan"
+    kColorNames05           "Forest"
+    kColorNames06           "Green"
+    kColorNames07           "Magenta"
+    kColorNames08           "Purple"
+    kColorNames09           "Red"
+    kColorNames10           "White"
+    kColorNames11           "Yellow"
+    kColorNames12           "Crimson"
+    kColorNames13           "Navy"
+    kColorNames14           "Teal"
+    kColorNames15           "Olive"
+END
+
+STRINGTABLE 
+BEGIN
+    kColorNames16           "Charcoal"
+    kColorNames17           "Orange"
+    kColorNames18           "Tan"
+    kColorNames19           "Australian"
+    kColorNames20           "Brazilian"
+    kColorNames21           "Canadian"
+    kColorNames22           "Chinese"
+    kColorNames23           "Colombian"
+    kColorNames24           "Egyptian"
+    kColorNames25           "English"
+    kColorNames26           "French"
+    kColorNames27           "German"
+    kColorNames28           "Indian"
+    kColorNames29           "Indochinese"
+    kColorNames30           "Indonesian"
+    kColorNames31           "Italian"
+END
+
+STRINGTABLE 
+BEGIN
+    kColorNames32           "Ivorian"
+    kColorNames33           "Japanese"
+    kColorNames34           "Mexican"
+    kColorNames35           "Mongolian"
+    kColorNames36           "Persian"
+    kColorNames37           "Russian"
+    kColorNames38           "African"
+    kColorNames39           "Turkish"
+    kColorNames40           "Islandish"
+    kColorNames41           "American"
+    kColorNames42           "Blocked"
+    kColorNames43           "None"
+END
+
+STRINGTABLE 
+BEGIN
+    kSeasonStrings01        "None"
+    kSeasonStrings02        "Spring"
+    kSeasonStrings03        "Summer"
+    kSeasonStrings04        "Fall"
+    kSeasonStrings05        "Autumn"
+    kSeasonStrings06        "Winter"
+END
+
+STRINGTABLE 
+BEGIN
+    kCoastStrings01         "(sc)"
+    kCoastStrings02         "(nc)"
+    kCoastStrings03         "(ec)"
+    kCoastStrings04         "(wc)"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

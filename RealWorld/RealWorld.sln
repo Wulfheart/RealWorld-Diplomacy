@@ -1,0 +1,36 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Common", "Common\Common.vcproj", "{24B0ECE3-B6FF-40E8-A131-69EE7E28F0D7}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RealWorld", "Realpolitik.vcproj", "{ABF43DE4-8002-464C-8F4F-EDA0DC57CB65}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "RWSetup", "..\RWSetup\RWSetup.vdproj", "{372FA585-AE4D-4490-9726-A8E228A8476E}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "RWSetupLight", "..\RWSetupLight\RWSetupLight.vdproj", "{559EDD41-38F6-4476-AE2A-7D89033D59D9}"
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug
+		ConfigName.1 = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+		{ABF43DE4-8002-464C-8F4F-EDA0DC57CB65}.0 = {24B0ECE3-B6FF-40E8-A131-69EE7E28F0D7}
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{24B0ECE3-B6FF-40E8-A131-69EE7E28F0D7}.Debug.ActiveCfg = Debug|Win32
+		{24B0ECE3-B6FF-40E8-A131-69EE7E28F0D7}.Debug.Build.0 = Debug|Win32
+		{24B0ECE3-B6FF-40E8-A131-69EE7E28F0D7}.Release.ActiveCfg = Release|Win32
+		{24B0ECE3-B6FF-40E8-A131-69EE7E28F0D7}.Release.Build.0 = Release|Win32
+		{ABF43DE4-8002-464C-8F4F-EDA0DC57CB65}.Debug.ActiveCfg = Debug|Win32
+		{ABF43DE4-8002-464C-8F4F-EDA0DC57CB65}.Debug.Build.0 = Debug|Win32
+		{ABF43DE4-8002-464C-8F4F-EDA0DC57CB65}.Release.ActiveCfg = Release|Win32
+		{ABF43DE4-8002-464C-8F4F-EDA0DC57CB65}.Release.Build.0 = Release|Win32
+		{372FA585-AE4D-4490-9726-A8E228A8476E}.Debug.ActiveCfg = Debug
+		{372FA585-AE4D-4490-9726-A8E228A8476E}.Release.ActiveCfg = Release
+		{559EDD41-38F6-4476-AE2A-7D89033D59D9}.Debug.ActiveCfg = Debug
+		{559EDD41-38F6-4476-AE2A-7D89033D59D9}.Release.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal
